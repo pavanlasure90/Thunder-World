@@ -1,0 +1,26 @@
+.productsContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr)
+}
+
+.productsContainer{
+    margin-top: 4rem;
+    padding-left: 3rem;
+}
+
+.product img{
+    height: 100px;
+}
+
+.product p{
+    font-size: medium;
+}
+
+span{
+    color: rgb(91, 91, 242);
+}
+
+button{
+    outline: none;
+}
+
