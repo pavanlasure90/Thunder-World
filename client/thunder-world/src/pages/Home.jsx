@@ -9,7 +9,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products?limit=30')
+    fetch('data.json') // Assuming data.json is in the same directory as your component
       .then((response) => response.json())
       .then((data) => {
         const initialProducts = data.map((product) => ({
@@ -20,8 +20,12 @@ const Home = () => {
         }));
         setOriginalProducts(initialProducts);
         setProducts(initialProducts);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
       });
   }, []);
+  
 
   const handleSearch = (query) => {
     const filteredProducts = originalProducts.filter(
