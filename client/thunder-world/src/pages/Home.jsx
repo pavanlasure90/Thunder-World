@@ -9,7 +9,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch('data.json') // Assuming data.json is in the same directory as your component
+    fetch('data.json') 
       .then((response) => response.json())
       .then((data) => {
         const initialProducts = data.map((product) => ({
