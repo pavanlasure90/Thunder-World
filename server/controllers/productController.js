@@ -5,9 +5,9 @@ const User = require("../models/User");
 const addToCart = async (req, res) => {
   try {
     // Extract product data from the request body
-    const { id, title, image, description } = req.body;
+    const { id, title, image, description, price } = req.body;
     const user = await User.findById(id);
-    user.cart.push({ title, image, description });
+    user.cart.push({ title, image, description, price });
     user.save();
 
     res.status(201).json({

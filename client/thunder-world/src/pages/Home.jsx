@@ -16,6 +16,7 @@ const Home = () => {
           title: product.title,
           image: product.image,
           description: product.description,
+          price: product.price, // Added price property
           showFullDescription: false,
         }));
         setOriginalProducts(initialProducts);
@@ -99,6 +100,7 @@ const Home = () => {
                       {product.showFullDescription ? 'Read less' : 'Read more'}
                     </span>
                   </p>
+                  <p className="card-price">Price: {product.price}</p> {/* Added price */}
                   <div className="d-flex justify-content-between">
                     <button className="btn btn-outline-primary" onClick={() => handleAddToCart(product)}>Add to cart</button>
                     <button className="btn btn-primary">Buy now</button>
