@@ -1,28 +1,26 @@
 // productControllers.js
-const Product = require('../models/Product');
+const Product = require("../models/Product");
+const User = require("../models/User");
 
 const addToCart = async (req, res) => {
   try {
     // Extract product data from the request body
-    const { title, image, description } = req.body;
+    const { id, title, image, description } = req.body;
+    const user = await User.findById(id);
+    user.cart.push({ title, image, description });
+    user.save();
 
-    // Create a new product document
-    const newProduct = new Product({
-      title,
-      image,
-      description
+    res.status(201).json({
+      message: "Product added to cart successfully",
+      product: user,
     });
-
-    // Save the product to the database
-    await newProduct.save();
-
-    res.status(201).json({ message: 'Product added to cart successfully', product: newProduct });
   } catch (error) {
-    console.error('Error adding product to cart:', error);
-    res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+    console.log();
+    console.error("Error adding product to cart:", error);
+    res.status(500).json({ error: error.message });
   }
 };
 
 module.exports = {
-  addToCart
+  addToCart,
 };

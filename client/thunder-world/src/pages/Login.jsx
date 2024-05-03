@@ -17,7 +17,7 @@ const Login = () => {
                 email,
                 password,
             });
-
+            localStorage.setItem('userInfo', response.data._id.toString())
             if (response.data.error) {
                 toast.error(response.data.error);
             } else {

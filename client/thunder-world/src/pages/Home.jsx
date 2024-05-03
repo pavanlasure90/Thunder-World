@@ -9,7 +9,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch('data.json') 
+    fetch('data.json')
       .then((response) => response.json())
       .then((data) => {
         const initialProducts = data.map((product) => ({
@@ -25,7 +25,7 @@ const Home = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-  
+
 
   const handleSearch = (query) => {
     const filteredProducts = originalProducts.filter(
@@ -42,14 +42,16 @@ const Home = () => {
 
   const handleAddToCart = async (product) => {
     try {
-      const response = await axios.post('http://localhost:8000/products/add-to-cart', { product });
+      console.log(product);
+      const id = localStorage.getItem('userInfo')
+      const response = await axios.post('http://localhost:8000/product/add-to-cart', { ...product, id });
       console.log('Response from server:', response);
       console.log('Product added to cart:', response.data);
     } catch (error) {
       console.error('Error adding product to cart:', error);
     }
   };
-  
+
 
   return (
     <>
@@ -57,7 +59,7 @@ const Home = () => {
       <div className="container my-3">
         <form className="form-inline my-2 my-lg-0">
           <input
-            style={{width:"100vw"}}
+            style={{ width: "100vw" }}
             className="form-control mr-sm-2"
             type="search"
             placeholder="Search"
