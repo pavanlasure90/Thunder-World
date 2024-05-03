@@ -18,6 +18,7 @@
 
 span{
     color: rgb(91, 91, 242);
+    cursor: pointer;
 }
 
 button{
