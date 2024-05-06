@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 import './Home.css';
 
 const Home = () => {
+  const navigate = useNavigate(); 
   const [originalProducts, setOriginalProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,7 +18,7 @@ const Home = () => {
           title: product.title,
           image: product.image,
           description: product.description,
-          price: product.price, // Added price property
+          price: product.price,
           showFullDescription: false,
         }));
         setOriginalProducts(initialProducts);
@@ -44,10 +46,11 @@ const Home = () => {
   const handleAddToCart = async (product) => {
     try {
       console.log(product);
-      const id = localStorage.getItem('userInfo')
-      const response = await axios.post('http://localhost:8000/product/add-to-cart', { ...product, id });
-      console.log('Response from server:', response);
-      console.log('Product added to cart:', response.data);
+      const id = localStorage.getItem('userInfo');
+      await axios.post('http://localhost:8000/product/add-to-cart', { ...product, id }, { withCredentials: true });
+      console.log('Product added to cart');
+      // Navigate to cart page after adding product to cart
+      navigate('/cart');
     } catch (error) {
       console.error('Error adding product to cart:', error);
     }
