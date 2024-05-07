@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const cartItemSchema = new Schema({
+  image: String,
+  title: String,
+  price: Number,
+  description: String,
+  _id: String, 
+});
+
 const userSchema = new Schema(
   {
     email: {
@@ -8,7 +16,7 @@ const userSchema = new Schema(
       unique: true,
     },
     password: String,
-    cart: [],
+    cart: [cartItemSchema],
   },
   { timestamps: true, versionKey: false }
 );
