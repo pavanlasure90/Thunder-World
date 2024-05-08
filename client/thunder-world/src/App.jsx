@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from '../../context/userContext';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import StripePay from './pages/StripePay';
 
 axios.defaults.baseURL = 'http://localhost:8000/';
 axios.defaults.withCredentials = true;
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/home' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/stripe' element={<StripePay />} />
         </Routes>
       </div>
     </UserContextProvider>
