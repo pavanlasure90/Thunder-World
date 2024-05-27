@@ -11,7 +11,7 @@ const StripePay = ({ grandTotal, clearCart }) => {
     console.log(token);
     alert("Payment is successful! Your order has been placed.");
     // clearCart();
-    navigate('/ordered');
+    navigate('/checkout');
   };
 
   return (

@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
+import CheckedOut from './pages/CheckedOut';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from '../../context/userContext';
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/home' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/stripe' element={<StripePay />} />
+          <Route path='/checkout' element={<CheckedOut />} />
         </Routes>
       </div>
     </UserContextProvider>

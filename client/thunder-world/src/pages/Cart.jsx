@@ -15,7 +15,7 @@ const Cart = () => {
     const fetchCartData = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/product/get-cart/${userId}`);
-        setCartData(response.data.cart.map(item => ({ ...item, quantity: 1, totalPrice: item.price }))); // Initialize quantity and totalPrice
+        setCartData(response.data.cart.map(item => ({ ...item, quantity: 1, totalPrice: item.price }))); 
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -95,7 +95,7 @@ const Cart = () => {
             ))}
           </div>
         )}
-        <div className="text-center mt-4 mb-10" > 
+        <div className="text-center mt-4 mb-10"> 
           <h2 className="text-2xl font-bold">Grand Total: ${calculateGrandTotal()}</h2>
           <StripePay grandTotal={calculateGrandTotal()} /> 
         </div>
